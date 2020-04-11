@@ -16,10 +16,12 @@ for one_file_name in glob.glob("mojo_html_files/*.html"):
 
 	mojo_table = soup.find("table")
 	mojo_rows = mojo_table.find_all("tr")
-	# print(mojo_rows)
 
 	for r in mojo_rows[1:]:
+		#parse the link from all the 7-year box office mojo html
 		mojo_daily_link = r.find("a", {"class":"a-link-normal"})["href"]
+
+		#combine the parsed links together
 		df = df.append({
 				'mojo daily link': mojo_daily_link
 			}, ignore_index=True)

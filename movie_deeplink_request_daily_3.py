@@ -13,6 +13,7 @@ for link in df['mojo daily link']:
 	if os.path.exists("mojo_deep_link_daily_html/" + filename + ".html"):
 		print(filename + "exists")
 	else:	
+		#request all the daily html
 		print("Downloading:" + filename)
 		f = open("mojo_deep_link_daily_html/" + filename + ".html.temp","wb")
 		response = urllib.request.urlopen('https://www.boxofficemojo.com'+link)

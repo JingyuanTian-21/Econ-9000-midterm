@@ -11,10 +11,10 @@ url_list = []
 for each_year in mojo_year:
 	url = f'{"https://www.boxofficemojo.com/daily/"}{each_year}{"/?view=year"}'
 	url_list.append(url)
-string_mojoyear=str(mojo_year)
-print(url_list)
+	string_mojoyear=str(mojo_year)
 
 for i in range(7):
+	#request the 7-year box office mojo html
 	f = open("mojo_html_files/box_office_mojo_movie" + string_mojoyear[(i-1)*6+1:(i-1)*6+5] + ".html", "wb")
 	response = urllib.request.urlopen(url_list[i-1])
 	html = response.read()

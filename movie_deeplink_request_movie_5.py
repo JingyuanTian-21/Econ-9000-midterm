@@ -14,6 +14,7 @@ for movie_link in df['mojo movie link']:
 	if os.path.exists("mojo_deep_link_movie_html/" + filename + ".html"):
 		print(filename + "exists")
 	else:	
+		#request all the movie html
 		print("Downloading:" + filename)
 		f = open("mojo_deep_link_movie_html/" + filename + ".html.temp","wb")
 		response = urllib.request.urlopen('https://www.boxofficemojo.com'+ movie_link)

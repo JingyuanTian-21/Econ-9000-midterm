@@ -18,6 +18,7 @@ for one_file_name in glob.glob("mojo_deep_link_daily_html/*.html"):
 	mojo_rows = mojo_table.find_all("tr")
 
 	for r in mojo_rows[1:]:
+		#parse the data in daily box office html files
 		mojo_date = soup.find("div", {"class":"a-section a-spacing-none"}).find("h1", {"class":"mojo-gutter"}).text.replace("Domestic Box Office For ", "")
 		mojo_movie_link = r.find("a", {"class":"a-link-normal"})["href"]
 		movie_name = r.find("a", {"class":"a-link-normal"}).text
@@ -26,11 +27,11 @@ for one_file_name in glob.glob("mojo_deep_link_daily_html/*.html"):
 		gross_box_office_to_date = r.find_all("td", {"class": "a-text-right mojo-field-type-money mojo-estimatable"})[2].text.replace("$","")
 		number_days_release = r.find("td", {"class":"a-text-right mojo-field-type-positive_integer"}).text
 		distributers = r.find("td", {"class":"mojo-field-type-release_studios"}).text
-
+		#combine the parsed data together
 		df = df.append({
-				'mojo_date': mojo_date,
+				'date': mojo_date,
 				'mojo movie link': mojo_movie_link,
-				'movie name': movie_name,
+				'movie_name': movie_name,
 				'daily gross box office': daily_gross_box_office,
 				'number of theaters': number_of_theaters,
 				'gross box office to date': gross_box_office_to_date,
@@ -38,4 +39,4 @@ for one_file_name in glob.glob("mojo_deep_link_daily_html/*.html"):
 				'distributers': distributers
 			}, ignore_index=True)
 
-df.to_csv("mojo_parsed_files_csv/mojo_daily_data_dataset.csv")
+df.to_csv("mojo_parsed_files_csv/mojo_daily_data_dataset.csv",index=False)
