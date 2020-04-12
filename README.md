@@ -1,4 +1,4 @@
-"# Econ-9000-midterm" 
+"# Jingyuan Tian-Econ-9000-midterm" 
 This is a readme for Jingyuan Tian's Econ-9000-midterm project.
 
 The first python file we need to run is "movie_request_1.py". This file "movie_request_1.py" is to request the 7-year box office mojo html files and puts them in the "mojo_html_files" folder.
